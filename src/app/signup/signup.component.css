@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+    
+}
+
+
+.signupform{
+    padding: 3em  !important;
+    align-items: center !important;
+    border: solid lightgray .3em;
+    border-radius: 1em;
+    background-color: rgb(240, 217, 180);
+    max-height: 100vh;
+   max-width: 100vw;
+}
+
+.wrapper  { 
+    margin: 3em 2em !important;
+    padding: 4em 1em 1em 1em !important;
+    flex-wrap: wrap !important;
+    /* padding: 30px; */
+    display: flex !important;
+    justify-content: center !important;
+    justify-items: center !important;
+    max-height: fit-content;
+   
+}
+
+input,button,svg{
+    width: 100%;
+    max-width: 500px;
+}
+
+@media(max-width:900px){
+    .wrapper{
+        display: block;
+    }
+}
+

@@ -1,0 +1,16 @@
+table,th,tr,td{
+    border: 2px black solid;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    background-color: azure;
+}
+
+#a1{
+    color: blue;
+    margin-right: auto;
+    margin-left: 750px;
+    margin-top: -60px;
+    
+}

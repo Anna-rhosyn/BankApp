@@ -1,0 +1,118 @@
+<!-- <p>dashboard works!</p> -->
+<div class="main">
+<nav class="navbar navbar-dark bg-dark p-2">
+  <div class="container-fluid">
+    <a class="navbar-brand ">Navbar</a>
+    <form class="d-flex input-group w-auto">
+      <input
+        type="search"
+        type="search"
+        class="form-control rounded p-1"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="fas fa-search"></i>
+      </span>
+    </form>
+  </div>
+</nav>
+
+<!-- navbar ends -->
+<div>
+<input type="button" value="Logout" class="btn btn-danger btn-lg p-1" (click)="logout()" style="float: right;">
+<input type="button" value="Delete" class="btn btn-danger btn-lg p-1" (click)="delete()" style="float: right;">
+
+</div>
+
+  <h1>Welcome {{user}}</h1>
+  <div>
+    <a routerLink="/transaction">View Transaction History</a>
+  </div>
+  <!-- Selector of delete -->
+  <app-delete [item]="acno" (onCancel)="onCancel()" (onDelete)="onDelete($event)" ></app-delete>
+  <!-- string interpolation {{item}} delete.html -->
+  <div class="parent" [ngClass]="acno? 'style':'' " >
+    <!-- [ngClass="......"]To display only the data from delete.html file -->
+    
+    <!-- <h4> <b> System Date and Time : </b> {{systemDate}}</h4> -->
+    <!-- standard date -->
+
+    <h4> <b> System Date and Time : </b> {{systemDate | date}}</h4>
+    <h4> <b> System Date and Time : </b> {{systemDate | date : 'short'}}</h4>
+    
+    <div class="child">
+         
+<div class="wrapper">
+   
+       
+        <div class="col depositform" >
+            <!-- <img src="../../assets/Images/name.jp" alt=""> -->
+            <div class="text-center"><p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+                <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"/>
+              </svg></p></div>
+              <div class="text-center"><h2 class="mt-4 mb-4 text-center">Deposit</h2></div>
+            <!-- <h6 class="text-center">{{aim}}</h6> -->
+            <form [formGroup]="depositForm" action="" >
+              <input formControlName="acno" name="acno" type="text" id="depo_acno" placeholder="Account no" class="form-control mt-2 p-1">
+              <div *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched" style="color: red;">Invalid Data</div>
+                
+                <input formControlName="pswd" name="pswd" type="password" id="depo_pswd" placeholder="Password" class="form-control mt-2 p-1">
+                <div *ngIf="this.depositForm.get('pswd')?.errors && this.depositForm.get('pswd')?.touched" style="color: red;">Invalid Data</div>
+               
+                <input formControlName="amount" name="amount" type="text" id="depo_amount" placeholder="Amount" class="mt-2 form-control p-1">
+                <div *ngIf="this.depositForm.get('amount')?.errors && this.depositForm.get('amount')?.touched" style="color: red;">Invalid Data</div>
+               
+                <div class="d-grid gap-2">
+  
+                    <button type="button" (click)="deposit()" class="btn btn-primary mt-4 form-control p-1">Deposit</button>
+                    <!-- <div class="text-center"> <a href="#" routerLink="">Login here</a></div> -->
+                </div>
+            </form>
+        </div>
+       
+    
+  </div>
+     </div>
+
+
+     <div class="child">
+        
+<div class="wrapper">
+    
+        
+        <div class="col withdrawform " >
+            <!-- <img src="../../assets/Images/name.jp" alt=""> -->
+           <div class="text-center"> <p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+                <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"/>
+              </svg></p></div>
+            <div class="text-center"><h2 class="mt-4 mb-4 text-center">Withdraw</h2></div>
+            <!-- <h6 class="text-center">{{aim}}</h6> -->
+            <form [formGroup]="withdrawForm" action="" >
+              <input formControlName="acno1" name="acno1" type="text" id="with_acno" placeholder="Account no" class="form-control mt-2 p-1">
+              <div *ngIf="this.withdrawForm.get('acno1')?.errors && this.withdrawForm.get('acno1')?.touched" style="color: red;">Invalid Data</div>
+                
+                <input formControlName="pswd1" name="pswd1" type="password" id="with_pswd" placeholder="Password" class="form-control mt-2 p-1">
+                <div *ngIf="this.withdrawForm.get('pswd1')?.errors && this.withdrawForm.get('pswd1')?.touched" style="color: red;">Invalid Data</div>
+               
+                <input formControlName="amount1" name="amount1" type="text" id="with_amount" placeholder="Amount" class="mt-2 form-control p-1">
+                <div *ngIf="this.withdrawForm.get('amount1')?.errors && this.withdrawForm.get('amount1')?.touched" style="color: red;">Invalid Data</div>
+               
+                <div class="d-grid gap-2">
+  
+                    <button type="button" (click)="withdraw()" class="btn btn-primary mt-4 form-control p-1 ">Withdraw</button>
+                    <!-- <div class="text-center"> <a href="#" routerLink="">Login here</a></div> -->
+                </div>
+            </form>
+        </div>
+       
+    
+  </div>
+     </div>
+
+
+
+</div>
+
+
+</div>
